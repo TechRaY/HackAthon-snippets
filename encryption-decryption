@@ -1,0 +1,97 @@
+
+
+//login karane ke time pe use aayega
+
+
+<?php 
+	// return true;
+	require_once("functions.php");
+	
+	$name = $_POST["name"];
+	$gender = $_POST["gender"];
+	$email = $_POST["email"];
+	$username = $_POST["username"];
+	$salt = crypt($_POST["pass"]);
+
+	$querystring = "INSERT INTO Staff (Name, Gender, Email, Username, Salt) VALUES ('$name', '$gender', '$email', '$username', '$salt')";
+	// console.log($querystring);
+	// var_dump($querystring);
+	// print($querystring);
+	// $q = "SELECT * FROM Staff";
+	$reply =  query($querystring);
+	// echo $reply;
+	if(gettype($reply) == "array")
+		echo json_encode(true);
+	else
+		echo json_encode(false);
+?>
+
+<!---       do alag hai for reference ----------------->
+
+<?php
+	
+	require 'functions.php';
+
+	$user = $_POST["fp_username"];
+	$email = query("SELECT Name, Email FROM Staff WHERE Username='$user'");
+	
+	if(empty($email[0]["Email"]))
+		echo json_encode("false");
+	else
+	{
+
+		$newpassword = bin2hex(openssl_random_pseudo_bytes(5, $cstrong));
+
+		$dbpass = crypt($newpassword);
+
+		$subject = 'Password Reset - Attendance';
+
+		$body = 'Your new Password is '.$newpassword;
+
+		if (!sendmail($subject, $body, $email[0]["Email"], $email[0]["Name"]))
+		{
+			echo json_encode("0");
+		}
+		else
+		{
+			query("UPDATE Staff SET Salt = '$dbpass' WHERE Username='$user'");
+			echo json_encode("1");
+		}
+	}
+?>
+
+
+
+
+//Login check par use aayega
+
+<?php
+	// print_r($_POST);
+	session_start();
+	require "functions.php";
+
+	if(isset($_COOKIE["uid"]))
+	{
+		$password = $_POST["oldpass"]; 
+		$res = query("SELECT Salt FROM Staff WHERE StaffId = ".$_COOKIE["uid"]);
+		$password = crypt($password, $res[0]["Salt"]);
+		// print_r($res);
+		// echo $password;
+		if(hash_equals($res[0]["Salt"], $password))
+		{
+			$dbpass = crypt($_POST["pass"]);
+
+			$res = query("UPDATE Staff SET Salt = '$dbpass' WHERE StaffId = ".$_COOKIE["uid"]);
+			
+			if(gettype($res) == "array")
+				echo json_encode(true);
+			else
+				echo json_encode(false);
+		}
+		else
+			echo json_encode(false);
+		
+	}
+	else
+		header("Location: index.php");
+?>
