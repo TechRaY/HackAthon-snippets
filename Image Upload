@@ -1,0 +1,49 @@
+
+
+//if imagesubmit button has been clicked
+
+if(isset($_POST['imagesubmit']))
+   {
+	    
+  
+   if(is_uploaded_file($_FILES['image1']['tmp_name']))	    //file has been uploaded or not
+   {  $image1_name=$_FILES['image1']['name'];
+       $image1_type=$_FILES['image1']['type'];
+       $image1path='scrollupload/'.$_FILES['image1']['name']  ;
+	 
+	    
+	 
+	 
+if($image1_type=='image/jpeg' || $image1_type=='image/gif' || $image1_type=='image/png' )             //MIME type check
+         {            
+		 
+		 
+		     $uploadfile=move_uploaded_file($_FILES['image1']['tmp_name'],'scrollupload/'.$_FILES['image1']['name']);       //move the file in local folder
+		 
+             $sql="UPDATE `homepage` SET  `imagename`='$image1_name' ,`imagepath`='$image1path' WHERE imageno=1 ";		 //update the database path
+
+
+		$query=mysqli_query($con,$sql);	  //fire the query
+		 
+              if($uploadfile && $query)                   //if both done
+			  {
+
+			  }				  
+			  
+			  else if(!$uploadfile)
+			  {
+
+			  }	  
+
+			  else if(!$query)
+			  {
+
+			  }	  
+		
+		 
+		 }             
+	   
+
+	 
+   }
+   
