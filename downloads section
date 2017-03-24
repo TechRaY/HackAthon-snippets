@@ -5,3 +5,8 @@ header("Content-Disposition: attachment ;  filename=".$filename);
 header('Content-type : application/pdf');
 readfile(''.$linkpath);
 
+
+
+OR use this
+
+http://www.web-development-blog.com/archives/php-download-file-script/
