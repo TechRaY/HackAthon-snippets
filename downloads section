@@ -1,0 +1,7 @@
+
+// Just get the filename and linkpath from the database and it is done.
+
+header("Content-Disposition: attachment ;  filename=".$filename);
+header('Content-type : application/pdf');
+readfile(''.$linkpath);
+
