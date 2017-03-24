@@ -1,0 +1,47 @@
+   if(isset($_POST['downloadsubmit']))        //download button pe click kiya kya
+   {
+	   
+	   if(!empty($_POST['link1']))                 //front mein kya naam dikhega
+	   {
+		  
+		   $link1=$_POST["link1"];
+		   $sql="UPDATE `downloadlink` SET `linkfrontname`='$link1' where linkno=1 ";
+		   $query=mysqli_query($con,$sql);
+		   
+		}
+		
+    
+    
+    if(is_uploaded_file($_FILES['flink1']['tmp_name']))	   //flink is variable
+	   {
+		    $link1_name=$_FILES['flink1']['name'];
+           $link1_type=$_FILES['flink1']['type'];
+          $link1path='downloadupload/'.$_FILES['flink1']['name']  ;
+		   
+		   if($link1_type=='application/pdf' )
+		   {
+			   $uploadfile=move_uploaded_file($_FILES['flink1']['tmp_name'],'downloadupload/'.$_FILES['flink1']['name']);          //send to local folder
+			   
+			        $sql="UPDATE downloadlink SET `linkname`='$link1_name',`linkpath`='$link1path' where linkno=1  ";
+		            $query=mysqli_query($con,$sql);
+		      
+			  
+			  
+              if($uploadfile && $query)
+			  {
+				
+			  }				  
+			  
+			  else if(!$uploadfile)
+			  {
+				echo "not uploaded";
+			  }	  
+
+			  else if(!$query)
+			  {
+				echo "query not fired";
+			  }	  
+        
+       }
+		 }
+	  }
