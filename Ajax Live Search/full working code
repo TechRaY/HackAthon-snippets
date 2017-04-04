@@ -1,0 +1,122 @@
+
+
+<div class="col-md-10 content">   
+					<div class="row">
+						<div class="welcome  col-md-3">Welcome Admin!</div>
+					</div>
+					<div class="container">
+
+                    <form action=../php/addcollege.php method="POST">
+						 
+                    	<div class="col-md-4">
+							<button type="submit" class="btn btn-primary btn-lg add" name="newsubmit">Add new College</button>
+                        </div>
+
+                        <div class="col-md-8"> 
+
+				            <input type="text" onKeyUp="fx(this.value)" autocomplete="off" name="search" id="search" class="textbox" placeholder="Search by College Name/Code" >
+				
+
+							<button type="submit" class="btn btn-primary  btn-lg modify " name="modifysubmit">Modify College Info</button><br>				
+							<div id="livesearch" class="sirdard" ></div>
+				
+						</div>
+					</form>	 
+					</div>
+          
+</div>
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+<script>
+
+  $().ready(function()
+   {
+
+      		$('#search').focus(function()
+       		{
+    			$(this).animate({ width: '50%' }, 'slow');
+       		}).blur(function(){
+      
+               	if ( $("#search").val().length ==0 )
+				{
+               		$(this).animate({ width: '50px' }, 'slow');
+				}   
+			
+			});
+         
+         
+            $('#livesearch').click(function() { 
+				//alert($(event.target).html());		
+				
+					var content=$(event.target).html();
+				    $('#search').val(content);
+                    $('#livesearch').html("");
+
+			});  
+  }) 
+
+</script>
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+.add{
+	margin-top:4%;
+	padding-left: 15px;
+}
+
+.modify{
+	padding-left: 10px;
+	margin-top: -1%;
+}
+
+#search{
+	width:50px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: white;
+    background-image: url('../imgs/searchicon.png');
+	background-size: 80%;
+    background-position: top center;
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    margin-top: 1%;
+    margin-left:4%;
+    font-size: 15px;
+}
+
+
+
+.live-outer{
+    height:35px;
+    border-bottom:1px solid #ccc; 
+	background:#fff;
+	font-size:20px;
+	padding-left:20px;
+	padding-top:2px;
+
+}
+
+.live-outer:hover{
+	background:#ccc;
+}
+
+
+
+#livesearch{
+	z-index:9999; 
+	width:50%;
+	max-height:100px;
+	overflow:auto; 
+	box-shadow:0px 2px 4px #444; 
+	margin-top: .5%;
+    margin-left:4%;
+}
+
+
+
+
+
