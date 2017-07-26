@@ -1,3 +1,101 @@
+	// Admin part
+  
+   if(isset($_POST['downloadsubmit']))                               // changing the links frontname
+   {
+	    if(!empty($_POST['link1']))
+	      {
+		       $link1=$_POST["link1"];
+		        $sql="UPDATE `downloadlink` SET `linkfrontname`='$link1' where linkno=1 ";
+		        $query=mysqli_query($con,$sql);
+		    }
+    }
+
+------------------------------------------------------------------------------------------------------------------------------------------
+
+if(is_uploaded_file($_FILES['flink1']['tmp_name']))	               // check whether the file has been uplooaded or not  
+{                                                                        //flink is the name at the front end   
+		       $link1_name=$_FILES['flink1']['name'];
+           $link1_type=$_FILES['flink1']['type'];
+           $link1path='downloadupload/'.$_FILES['flink1']['name']  ;
+		   
+		   if($link1_type=='application/pdf' )
+		   {
+			      $uploadfile=move_uploaded_file($_FILES['flink1']['tmp_name'],'downloadupload/'.$_FILES['flink1']['name']);
+			      $sql="UPDATE downloadlink SET `linkname`='$link1_name',`linkpath`='$link1path' where linkno=1  ";
+		        $query=mysqli_query($con,$sql);
+		      
+			  
+			  
+            if($uploadfile && $query)
+			      {}				  
+			  
+			      else if(!$uploadfile)
+			      {
+				      echo "not uploaded";
+			      }	  
+
+			      else if(!$query)
+			      {
+				      echo "query not fired";
+			      }	  
+		   
+        }
+ }
+	   
+-------------------------------------------------------------------------------------------------------------------------------------- 
+//Front end html
+
+<a href="link1.php"><?php echo $link1 ?></a>
+
+---------------------------------------------------------------------------------------------------------------------------------------
+//link1.php
+
+
+<?php
+
+include('db.php'); 
+
+$sql="Select * from downloadlink where linkno=1 ";
+$query=mysqli_query($con,$sql);
+		   $result=mysqli_fetch_array($query);
+		   $filename=$result["linkname"];
+           $linkpath=$result["linkpath"];
+
+
+
+ignore_user_abort(true);
+set_time_limit(0); // disable the time limit for this script
+
+
+$fullPath = $linkpath;
+ 
+if ($fd = fopen ($fullPath, "r")) {
+    $fsize = filesize($fullPath);
+    $path_parts = pathinfo($fullPath);
+    $ext = strtolower($path_parts["extension"]);
+    switch ($ext) {
+        case "pdf":
+        header("Content-type: application/pdf");
+        header("Content-Disposition: attachment; filename=\"".$path_parts["basename"]."\""); // use 'attachment' to force a file download
+        break;
+        // add more headers for other content types here
+        default;
+        header("Content-type: application/octet-stream");
+        header("Content-Disposition: filename=\"".$path_parts["basename"]."\"");
+        break;
+    }
+    header("Content-length: $fsize");
+    header("Cache-control: private"); //use this to open files directly
+    while(!feof($fd)) {
+        $buffer = fread($fd, 2048);
+        echo $buffer;
+    }
+}
+
+?>
+
+---------------------------------------------------------------------------------------------------------------------------------------
+//Deprecated
 
 // Just get the filename and linkpath from the database and it is done.
 
