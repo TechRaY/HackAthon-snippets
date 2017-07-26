@@ -46,4 +46,3 @@ if($image1_type=='image/jpeg' || $image1_type=='image/gif' || $image1_type=='ima
 
 	 
    }
-   
