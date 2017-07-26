@@ -16,10 +16,8 @@ if(isset($_POST['Password'])){
     $password = $_POST['Password'];
 }
 
-
-
+	
 $userObject = new User();
-
 
 if(!empty($username) && !empty($password)){
 
