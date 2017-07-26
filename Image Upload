@@ -6,7 +6,7 @@ if(isset($_POST['imagesubmit']))
    {
 	    
   
-   if(is_uploaded_file($_FILES['image1']['tmp_name']))	    //file has been uploaded or not
+   if(is_uploaded_file($_FILES['image1']['tmp_name']))	    //file has been uploaded or not              image1 is the name in the frontend
    {  $image1_name=$_FILES['image1']['name'];
        $image1_type=$_FILES['image1']['type'];
        $image1path='scrollupload/'.$_FILES['image1']['name']  ;
