@@ -26,11 +26,11 @@ if(isset($_POST['Submit']))
 
        if($json_registration['success']==1)
        {
-           header("Location:../html/topics.php");
+           header("Location:../blankpage.php");         
        }
        else
        {
-           header("Location:../html/register.php");
+           header("Location:../register.html");
        }
 
 
@@ -38,7 +38,7 @@ if(isset($_POST['Submit']))
 
 }
 else {
-  header("Location:../html/register.php");
+  header("Location:../register.html");
 }
 
 ?>
