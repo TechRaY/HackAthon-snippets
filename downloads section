@@ -95,6 +95,13 @@ if ($fd = fopen ($fullPath, "r")) {
 ?>
 
 ---------------------------------------------------------------------------------------------------------------------------------------
+http://www.web-development-blog.com/archives/php-download-file-script/
+
+in case agar get use kiya toh thoda changes hai refer karle
+---------------------------------------------------------------------------------------------------------------------------------------
+
+
+
 //Deprecated
 
 // Just get the filename and linkpath from the database and it is done.
