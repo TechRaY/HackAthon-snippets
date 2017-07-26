@@ -28,12 +28,12 @@ if(!empty($username) && !empty($password)){
 
     if($json_array['success']==1)
     {
-        header("Location:../html/topics.php");
+        header("Location:../blankpage.php");
     }
     else
     {
         echo "<script>alert('Invalid Username Or Password');
-        window.location = '../html/login.php';
+        window.location = '../login.html';
         </script>";
 
     }
@@ -42,7 +42,7 @@ if(!empty($username) && !empty($password)){
 
 }
 else{
-  header("Location:../html/login.php");
+  header("Location:../login.html");
 }
 
 
