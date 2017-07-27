@@ -1,0 +1,18 @@
+//put the entire thing in a function and invole it when required
+
+<?php
+
+require 'pdfcrowd.php';
+
+$client = new Pdfcrowd("rajeev11430", "4705d63392add4090174d5481c001c87");    // https://pdfcrowd.com/i/php-code-to-convert-html-to-pdf.html   if trial overs
+
+$pdf = $client->convertURI('http://www.google.com/');          //give the uri you want to have as a pdf
+
+header("Content-Type: application/pdf");
+header("Cache-Control: max-age=0");
+header("Accept-Ranges: none");
+header("Content-Disposition: attachment; filename=\"google_com.pdf\"");
+
+echo $pdf;
+
+?>
