@@ -1,6 +1,6 @@
 <?php
 
-header('Location:../index.php');
+
 echo "hi";
 
 $idtoken = $_GET["idtoken"];
@@ -14,9 +14,8 @@ $name = $json['name'];
 $email = $json['email'];
 $id = $json['sub'];
 
-
-echo $name;
-
-
+//echo $name;                                first check in whether the sign up has been done before or not depending on that insert it 
+                                              // and redirect the page.
+//header('Location:../index.php');
 
 ?>
