@@ -1,0 +1,6 @@
+http://talkerscode.com/webtricks/send-email-using-smtp-and-php-mailer.php
+
+
+download the library and keep the folder here itself
+
+PHPMailerAutoload.php mein first line par issue hai check the file name in require_once
