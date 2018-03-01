@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 require_once('paypal.class.php');  // include the class file
 $p = new paypal_class;             // initiate an instance of the class
 $p->paypal_url = 'https://www.sandbox.paypal.com/cgi-bin/webscr';   // testing paypal url
@@ -35,7 +36,7 @@ switch ($_GET['action']) {
       $id = $_REQUEST['id'];
       $key = $_REQUEST['key'];
 
-      $p->add_field('business', 'hb@supertec.com');
+      $p->add_field('business', 'hb@TechRaY.com');
       $p->add_field('return', $this_script.'?action=success');
       $p->add_field('cancel_return', $this_script.'?action=cancel');
       $p->add_field('notify_url', $this_script.'?action=ipn');
@@ -43,6 +44,9 @@ switch ($_GET['action']) {
       $p->add_field('amount', $payment);
       $p->add_field('key', $key);
       $p->add_field('item_number', $id);
+	  $currency = $_REQUEST['pm'];
+	  
+
       
 
       $p->submit_paypal_post(); // submit the fields to paypal
@@ -104,7 +108,7 @@ switch ($_GET['action']) {
          $dated = date("D, d M Y H:i:s", time()); 
          
          $subject = 'Instant Payment Notification - Recieved Payment';
-         $to = 'hb@supertec.com';    //  your email
+         $to = 'hb@TechRaY.com';    //  your email
          $body =  "An instant payment notification was successfully recieved\n";
          $body .= "from ".$p->ipn_data['payer_email']." on ".date('m/d/Y');
          $body .= " at ".date('g:i A')."\n\nDetails:\n";
