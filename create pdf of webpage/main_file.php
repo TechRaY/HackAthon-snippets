@@ -1,10 +1,10 @@
-//put the entire thing in a function and invole it when required
+//put the entire thing in a function and invoke it when required
 
 <?php
 
 require 'pdfcrowd.php';
 
-$client = new Pdfcrowd("rajeev11430", "4705d63392add4090174d5481c001c87");    // https://pdfcrowd.com/i/php-code-to-convert-html-to-pdf.html   if trial overs
+$client = new Pdfcrowd("TechRaY", "67170993cdcd03be5cfbc1bc26ba6ea0");    // https://pdfcrowd.com/i/php-code-to-convert-html-to-pdf.html   if trial overs
 
 $pdf = $client->convertURI('http://www.google.com/');          //give the uri you want to have as a pdf
 
