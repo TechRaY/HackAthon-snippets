@@ -11,14 +11,13 @@
        // var $events = $("#events");
         //$.get('https://www.eventbriteapi.com/v3/events/search/?q=health&location.address=MUMBAI&location.within=100km&location.latitude=19.0463017&location.longitude=72.8928885&token=VBA5V2AD6TYRSUKRI3YW');
 		
-		
-        $.get('https://www.eventbriteapi.com/v3/events/search/?q=health&location.address=MUMBAI&location.within=100km&location.latitude=19.0463017&location.longitude=72.8928885&token=VBA5V2AD6TYRSUKRI3YW', function(res) {
+	 $.get('https://www.eventbriteapi.com/v3/events/search/?q=health&location.address=MUMBAI&location.within=100km&location.latitude=19.0463017&location.longitude=72.8928885&token=VBA5V2AD6TYRSUKRI3YW', function(res) {
             if(res.events.length) {
                 var s = "<ul class='eventList'>";
                 for(var i=0;i<res.events.length;i++) {
                     var event = res.events[i];
                     console.dir(event);
-                    s += "<li><a href='" + event.url + "'>" + event.name.text + "</a> - " + event.description.text + "</li>";
+                    s += "<li><a href='" + event.url + "'>" + event.name.text + "</a> - " + event.description.text + "<img src='"+event.logo.url+"'></li>";
                 }
                 s += "</ul>";
                 $events.html(s);
@@ -27,6 +26,7 @@
             }
         });
         
+       
        
     });
     </script>
