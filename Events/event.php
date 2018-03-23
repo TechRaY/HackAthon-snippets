@@ -1,11 +1,14 @@
+<!--  https://www.eventbrite.com/myaccount/apps/   -->
+
+
 <html>
 <head>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script>
     $(document).ready(function() {
         
-        var token = 'FKHUUNL37TLGUELSFIYV';
-        var $events = $("#events");
+       // var token = 'FKHUUNL37TLGUELSFIYV';        //personal aoth token
+       // var $events = $("#events");
         //$.get('https://www.eventbriteapi.com/v3/events/search/?q=health&location.address=MUMBAI&location.within=100km&location.latitude=19.0463017&location.longitude=72.8928885&token=VBA5V2AD6TYRSUKRI3YW');
 		
 		
