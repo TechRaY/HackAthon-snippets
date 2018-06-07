@@ -47,3 +47,5 @@ if (version_compare(PHP_VERSION, '5.1.2', '>=')) {
         PHPMailerAutoload($classname);
     }
 }
+
+
