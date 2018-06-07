@@ -4,10 +4,9 @@ require_once('TwitterAPIExchange.php');
 
 	
 $settings = array(
-    'oauth_access_token' => "128821827-09n4WUJbETIsqLTj9XTw9e7TZZiuAkrAr4ZPtRRY",
-    'oauth_access_token_secret' => "UO1PBIi5JnNV5wt5XFa70I6aHDVjATGYWNl4cPaCbNHRw",
-    'consumer_key' => "ABRg3LljqERNmKNLAYy3aO1Gc",
-    'consumer_secret' => "QL9qujtWjFbac07xmgMxYnJYFKOQmfJ4PO1lXT8PWx6Zb37FQU"
+	
+	//twitter access keys on ves hackathon doc
+	
     );
 	
 $url = "https://api.twitter.com/1.1/statuses/user_timeline.json";
